@@ -16,6 +16,7 @@ public class ClaseProducto {
     private String nombre;
     public double precio;
     public int existencia;
+    public int existenciaNegativa;
     public String nombreCliente;
     public String e;
     
@@ -31,6 +32,7 @@ public class ClaseProducto {
         this.precio = precio;
         this.existencia=existencia;
         this.nombreCliente=nombreCliente;
+        this.existenciaNegativa=existenciaNegativa;
     }
 
     public String getNombre() {
@@ -60,9 +62,17 @@ public class ClaseProducto {
     public String getNombreCliente() {
         return nombreCliente;
     }
-    
-    
 
+    public int getExistenciaNegativa() {
+        return existenciaNegativa;
+    }
+
+    public void setExistenciaNegativa(int existenciaNegativa) {
+        this.existenciaNegativa = existenciaNegativa;
+    }
+    
+    
+    
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
     }
@@ -72,26 +82,26 @@ public class ClaseProducto {
         ClaseProducto ObjetoProducto = new ClaseProducto(nombre,existencia,nombreCliente, precio);
     arrayproductos.add(ObjetoProducto);
     }
-
-
-    public String comprar(String nombre, int existenciaNegativa, String nombreCliente,double precio ){
-        ClaseProducto ObjetoProducto = new ClaseProducto(nombre,existenciaNegativa,nombreCliente, precio);
+    
+    public String comprar(String nombre, int existencia, String nombreCliente, double precio)
+    {
+        ClaseProducto ObjetoCompra = new ClaseProducto(nombre,existenciaNegativa,nombreCliente, precio);
         
         while(objiterador.hasNext())
         {
-            ObjetoProducto=objiterador.next();
-            if(nombre.equals(ObjetoProducto.getNombre()))
+            ObjetoCompra=objiterador.next();
+            if(nombre.equals(ObjetoCompra.getNombre()))
             {
-                if (nombreCliente.equals(ObjetoProducto.getNombreCliente()))
+                if (nombreCliente.equals(ObjetoCompra.getNombreCliente()))
                 {
-                    ObjetoProducto.setExistencia(ObjetoProducto.getExistencia()-existenciaNegativa);
-                    if (ObjetoProducto.getExistencia()<0)
+                    ObjetoCompra.setExistencia(existencia-ObjetoCompra.getExistenciaNegativa());
+                    if (ObjetoCompra.getExistencia()<0)
                     {
                         e="Existencia agotada";                    
                     }
-                    if (ObjetoProducto.getExistencia()==0)
+                    if (ObjetoCompra.getExistencia()==0)
                     {
-                        arrayproductos.remove(ObjetoProducto);
+                        arrayproductos.remove(ObjetoCompra);
                         e="Compra realizada";
                     }
                     else

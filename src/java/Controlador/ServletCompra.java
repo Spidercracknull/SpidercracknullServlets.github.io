@@ -32,11 +32,11 @@ public class ServletCompra extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String nombre=request.getParameter("nombre");
-        int existencia=Integer.parseInt(request.getParameter("existencia"));
+        int existenciaNegativa=Integer.parseInt(request.getParameter("existenciaN"));
         String nombreCliente=request.getParameter("nombreCliente");
         double precio=Double.parseDouble(request.getParameter("precio"));
-        ClaseProducto obj=new ClaseProducto(nombre,existencia,nombreCliente,precio);
-        obj.comprar(nombre, existencia, nombreCliente, precio);
+        ClaseProducto obj=new ClaseProducto(nombre,existenciaNegativa,nombreCliente,precio);
+        obj.comprar(nombre, existenciaNegativa, nombreCliente, precio);
         
         
         try (PrintWriter out = response.getWriter()) {
@@ -50,7 +50,7 @@ public class ServletCompra extends HttpServlet {
             out.println("<h1>Servlet ServletCompra at " +
                     "El nombre del producto comprado es: "+obj.getNombre()+
                     "El precio de producto comprado es: "+obj.getPrecio()+
-                    "Las existencias compradas del producto son: "+obj.getExistencia()+
+                    "Las existencias compradas del producto son: "+obj.getExistenciaNegativa()+
                     "El nombre del cliente que compro el producto es:"+obj.getNombreCliente()+
                     request.getContextPath() + "</h1>");
             out.println("</body>");
