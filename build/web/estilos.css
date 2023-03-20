@@ -1,0 +1,42 @@
+
+body {
+    font-family: Arial;
+    background-color: #4F1271;
+    color: #333;
+}
+
+form {
+    background-color: #C8C6D7;
+    border: 1px solid #4A4063;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #4A4063;
+    margin: 10px;
+    padding: 10px;
+    width: 50%;
+}
+  
+
+  
+form input[type="text"],
+form input[type="email"],
+form select,
+form textarea {
+    border: 1px solid #BFACC8;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 75%;
+}
+  
+form input[type="submit"] {
+    background-color: #BFACC8;
+    border: none;
+    border-radius: 5px;
+    color: #BFACC8;
+    cursor: pointer;
+    padding: 10px;
+}
+  
+form input[type="submit"]:hover {
+    background-color: #666;
+}
